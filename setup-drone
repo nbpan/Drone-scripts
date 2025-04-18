@@ -20,6 +20,7 @@ cd ./src/ || exit
 
 # Anykernel3
 git clone https://github.com/UtsavBalar1231/Anykernel3 --depth=1 -b kona anykernel
+git clone https://github.com/nbpan/sm8250.git --depth=1 sm8250
 
 # Clone compiler
 if [[ "$@" =~ "aosp-clang"* ]]; then
