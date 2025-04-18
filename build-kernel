@@ -21,6 +21,8 @@ cd ./src/ || exit
 
 HOME="./sm8250"
 
+pwd
+
 if [[ "$@" =~ "gcc"* ]]; then
     KBUILD_COMPILER_STRING=$(${HOME}/../gcc64/bin/aarch64-elf-gcc --version | head -n1 | sed -e 's/aarch64-elf-gcc\ //' | perl -pe 's/\(//gs' | perl -pe 's/\)//gs')
     KBUILD_LINKER_STRING=$(${HOME}/../gcc64/bin/aarch64-elf-ld --version | head -n1 | perl -pe 's/\(//gs' | perl -pe 's/\)//gs')
@@ -267,7 +269,7 @@ OS=miui
 
 # Make defconfig
 make -j${KEBABS} ${ARGS} "${DEVICE}"_defconfig
-
+pwd
 scripts/config --file ${OUT_DIR}/.config \
     -d LOCALVERSION_AUTO \
     -d TOUCHSCREEN_COMMON \
