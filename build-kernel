@@ -19,7 +19,7 @@
 
 cd ./src/ || exit
 
-HOME="./sm8250"
+HOME="./"
 
 pwd
 
