@@ -22,13 +22,15 @@ cd ./src/ || exit
 HOME="./"
 
 pwd
-
+ls ./
+ls ./../
+ls ./../../
 if [[ "$@" =~ "gcc"* ]]; then
-    KBUILD_COMPILER_STRING=$(${HOME}/../gcc64/bin/aarch64-elf-gcc --version | head -n1 | sed -e 's/aarch64-elf-gcc\ //' | perl -pe 's/\(//gs' | perl -pe 's/\)//gs')
-    KBUILD_LINKER_STRING=$(${HOME}/../gcc64/bin/aarch64-elf-ld --version | head -n1 | perl -pe 's/\(//gs' | perl -pe 's/\)//gs')
+    KBUILD_COMPILER_STRING=$(${HOME}/gcc64/bin/aarch64-elf-gcc --version | head -n1 | sed -e 's/aarch64-elf-gcc\ //' | perl -pe 's/\(//gs' | perl -pe 's/\)//gs')
+    KBUILD_LINKER_STRING=$(${HOME}/gcc64/bin/aarch64-elf-ld --version | head -n1 | perl -pe 's/\(//gs' | perl -pe 's/\)//gs')
 else
-    KBUILD_COMPILER_STRING=$(${HOME}/../clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
-    KBUILD_LINKER_STRING=$(${HOME}/../clang/bin/ld.lld --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//' | sed 's/(compatible with [^)]*)//')
+    KBUILD_COMPILER_STRING=$(${HOME}/clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
+    KBUILD_LINKER_STRING=$(${HOME}/clang/bin/ld.lld --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//' | sed 's/(compatible with [^)]*)//')
 fi
 
 export KBUILD_COMPILER_STRING
