@@ -19,7 +19,7 @@
 
 cd ./src/ || exit
 
-HOME="./src"
+HOME="./"
 
 if [[ "$@" =~ "gcc"* ]]; then
     KBUILD_COMPILER_STRING=$(${HOME}/gcc64/bin/aarch64-elf-gcc --version | head -n1 | sed -e 's/aarch64-elf-gcc\ //' | perl -pe 's/\(//gs' | perl -pe 's/\)//gs')
