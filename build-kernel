@@ -217,9 +217,7 @@ function pack_image_build() {
             cp ${OUT_DIR}/arch/arm64/boot/Image.gz anykernel/kernels/$1
         elif [[ -f ${OUT_DIR}/arch/arm64/boot/Image ]]; then
             cp ${OUT_DIR}/arch/arm64/boot/Image anykernel/kernels/$1
-        else
         fi
-    else
     fi
 
     cp ${OUT_DIR}/arch/arm64/boot/dtb anykernel/kernels/$1
