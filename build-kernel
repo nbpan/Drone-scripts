@@ -17,9 +17,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cd ./src/ || exit
+cd ./kernelsrc || exit
 
-HOME="./src"
+HOME="./.."
 
 if [[ "$@" =~ "gcc"* ]]; then
     KBUILD_COMPILER_STRING=$(${HOME}/gcc64/bin/aarch64-elf-gcc --version | head -n1 | sed -e 's/aarch64-elf-gcc\ //' | perl -pe 's/\(//gs' | perl -pe 's/\)//gs')
@@ -208,11 +208,7 @@ function pack_image_build() {
             cp ${OUT_DIR}/arch/arm64/boot/Image.gz anykernel/kernels/$1
         elif [[ -f ${OUT_DIR}/arch/arm64/boot/Image ]]; then
             cp ${OUT_DIR}/arch/arm64/boot/Image anykernel/kernels/$1
-        else
-            tg_post_error $1
         fi
-    else
-        tg_post_error $1
     fi
 
     cp ${OUT_DIR}/arch/arm64/boot/dtb anykernel/kernels/$1
