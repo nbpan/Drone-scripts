@@ -17,15 +17,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cd ./src/ || exit
+cd ./kernelsrc || exit
 
-HOME="."
-
-pwd && ls
-cd ./../
-pwd && ls
-cd ./../../
-pwd && ls
+HOME="./.."
 
 if [[ "$@" =~ "gcc"* ]]; then
     KBUILD_COMPILER_STRING=$(${HOME}/gcc64/bin/aarch64-elf-gcc --version | head -n1 | sed -e 's/aarch64-elf-gcc\ //' | perl -pe 's/\(//gs' | perl -pe 's/\)//gs')
@@ -63,8 +57,8 @@ OUT_DIR=out
 if [[ "$@" =~ "gcc"* ]]; then
     VERSION=$(echo "${KBUILD_COMPILER_STRING}" | awk '{print $1,$2,$3}')
 elif [[ "$@" =~ "aosp-clang"* ]]; then
-    if [[ -f ${HOME}/clang/AndroidVersion.txt ]]; then
-        VERSION=$(cat ${HOME}/clang/AndroidVersion.txt | head -1)
+    if [[ -f ${}/clang/AndroidVersion.txt ]]; then
+        VERSION=$(cat ${}/clang/AndroidVersion.txt | head -1)
     fi
 else
     VERSION=""
